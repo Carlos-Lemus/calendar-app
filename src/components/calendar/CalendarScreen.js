@@ -20,18 +20,6 @@ moment.locale("es");
 
 const localizer = momentLocalizer(moment);
 
-// const events = [{
-//     title: "Cumpleaños del jefe",
-//     start: moment().toDate(),
-//     end: moment().add(2, "hour").toDate(),
-//     bgcolor: "#fafafa",
-//     notes: "Comprar el pastel",
-//     user: {
-//         _id: "123",
-//         name: "Carlos"
-//     }
-// }];
-
 export const CalendarScreen = () => {
 
     const {events, activeEvent} = useSelector(state => state.calendar)
@@ -63,15 +51,14 @@ export const CalendarScreen = () => {
     const onSelectEvent = (event) => {
         dispatch(startSetActiveEvent(event));
     };
-
+    
     const onViewChange = (event) => {
         setLastView(event);
         localStorage.setItem("lastView", event);
     };
 
-    const onSelectSlot = (event) => {
-        console.log(event);
-        dispatch(startOpenModal());
+    const onSelectSlot = (slotInfo) => {
+
     }
 
     return (
@@ -92,8 +79,8 @@ export const CalendarScreen = () => {
                 components={{
                     event: CalendarEvent
                 }}
-                onSelectSlot={ onSelectSlot }
                 selectable={ true }
+                onSelectSlot={ onSelectSlot }
             />
 
             <AddNewFab />

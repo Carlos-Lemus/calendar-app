@@ -25,32 +25,32 @@ export const eventReducer = (state = initialState, action) => {
             }
         case types.eventAddNew:
             return {
-                ...state, 
+                ...state,
                 events: [...state.events, action.payload]
             }
- 
+
         case types.eventClearActiveEvent:
             return {
                 ...state,
                 activeEvent: null
             }
-        
+
         case types.eventUpdate:
             return {
                 ...state,
                 events: state.events.map(
-                    event => (event.id === action.payload.id)? action.payload : event 
+                    event => (event.id === action.payload.id) ? action.payload : event
                 )
             }
- 
+
         case types.eventDeleted:
             return {
-                ...state, 
+                ...state,
                 events: state.events.filter(
                     event => (event.id !== state.activeEvent.id)
                 )
             }
-            
+
         default:
             return state;
     }
