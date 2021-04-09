@@ -74,6 +74,7 @@ const login = ( user ) => ({
     payload: user
 });
 
-const finishChecking = () => ({
+export const finishChecking = () => ({
     type: types.authCheckingFinish
 });
+

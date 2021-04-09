@@ -1,18 +1,7 @@
-import moment from "moment";
 import { types } from "../types/types";
 
 const initialState = {
-    events: [
-        {
-            id: Date.now(),
-            title: "Cumpleaños del jefe",
-            start: moment().toDate(),
-            end: moment().add(2, "hour").toDate(),
-            bgcolor: "#fafafa",
-            notes: "Comprar el pastel",
-            name: "Carlos"
-        }
-    ],
+    events: [],
     activeEvent: null
 }
 
@@ -49,6 +38,12 @@ export const eventReducer = (state = initialState, action) => {
                 events: state.events.filter(
                     event => (event.id !== state.activeEvent.id)
                 )
+            }
+
+        case types.eventLoaded:
+            return {
+                ...state,
+                events: action.payload
             }
 
         default:
