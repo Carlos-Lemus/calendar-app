@@ -55,7 +55,7 @@ export const LoginScreen = () => {
             }
             className="container-fluid login-container"
         >
-            <div className="row">
+            <div className="row animate__animated animate__fadeIn">
                 <div className="col-md-6 login-form-1">
                     <h3>Ingreso</h3>
                     <form onSubmit={ handleLogin } >

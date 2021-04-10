@@ -2,7 +2,8 @@ import { types } from "../types/types";
 
 const initialState = {
     events: [],
-    activeEvent: null
+    activeEvent: null,
+    daySlotCalendar: null
 }
 
 export const eventReducer = (state = initialState, action) => {
@@ -44,6 +45,17 @@ export const eventReducer = (state = initialState, action) => {
             return {
                 ...state,
                 events: action.payload
+            }
+
+        case types.eventSelectSlot:
+            return {
+                ...state,
+                daySlotCalendar: action.payload
+            }
+        case types.eventClearSelectSlot:
+            return {
+                ...state,
+                daySlotCalendar: null
             }
 
         default:

@@ -116,3 +116,12 @@ export const startDeleteEvent = () => {
 const deleteEvent = () => ({
     type: types.eventDeleted
 });
+
+export const selectSlotDay = (day) => ({
+    type: types.eventSelectSlot,
+    payload: day
+});
+
+export const clearSelectSlotDay = () => ({
+    type: types.eventClearSelectSlot
+});

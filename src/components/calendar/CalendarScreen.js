@@ -12,7 +12,7 @@ import { CalendarEvent } from './CalendarEvent';
 import { CalendarModal } from './CalendarModal';
 import { useDispatch, useSelector } from 'react-redux';
 import { startOpenModal } from '../../actions/ui';
-import { startLoadingEvents, startSetActiveEvent } from '../../actions/events';
+import { selectSlotDay, startLoadingEvents, startSetActiveEvent } from '../../actions/events';
 import { AddNewFab } from '../ui/AddNewFab';
 import { DeleteEventFab } from '../ui/DeleteEventFab';
 
@@ -63,9 +63,17 @@ export const CalendarScreen = () => {
         setLastView(event);
         localStorage.setItem("lastView", event);
     };
-
+    
     const onSelectSlot = (slotInfo) => {
-
+        const {start, end} = slotInfo;
+        
+        dispatch(selectSlotDay({
+            title: "",
+            notes: "",
+            start, end
+        }));
+        
+        dispatch(startOpenModal());
     }
 
     return (
@@ -73,6 +81,7 @@ export const CalendarScreen = () => {
             <NavBar />
 
             <Calendar
+                className="animate__animated animate__zoomIn"
                 localizer={localizer}
                 events={events}
                 startAccessor="start"
